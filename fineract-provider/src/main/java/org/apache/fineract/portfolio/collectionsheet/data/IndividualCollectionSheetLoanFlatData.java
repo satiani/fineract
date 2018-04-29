@@ -31,6 +31,7 @@ public class IndividualCollectionSheetLoanFlatData {
     private final String clientName;
     private final Long clientId;
     private final Long loanId;
+    private final Long externalId;
     private final String accountId;
     private final Integer accountStatusId;
     private final String productShortName;
@@ -45,7 +46,7 @@ public class IndividualCollectionSheetLoanFlatData {
     private BigDecimal feeDue = BigDecimal.ZERO;
     private BigDecimal feePaid = BigDecimal.ZERO;
 
-    public IndividualCollectionSheetLoanFlatData(final String clientName, final Long clientId, final Long loanId, final String accountId,
+    public IndividualCollectionSheetLoanFlatData(final String clientName, final Long clientId, final Long loanId, final Long externalId, final String accountId,
             final Integer accountStatusId, final String productShortName, final Long productId, final CurrencyData currency,
             final BigDecimal disbursementAmount, final BigDecimal principalDue, final BigDecimal principalPaid,
             final BigDecimal interestDue, final BigDecimal interestPaid, final BigDecimal chargesDue, final BigDecimal feeDue,
@@ -53,6 +54,7 @@ public class IndividualCollectionSheetLoanFlatData {
         this.clientName = clientName;
         this.clientId = clientId;
         this.loanId = loanId;
+        this.externalId = externalId;
         this.accountId = accountId;
         this.accountStatusId = accountStatusId;
         this.productShortName = productShortName;
@@ -78,6 +80,10 @@ public class IndividualCollectionSheetLoanFlatData {
 
     public Long getLoanId() {
         return this.loanId;
+    }
+
+    public Long getExternalId() {
+        return this.externalId;
     }
 
     public String getAccountId() {
@@ -125,7 +131,7 @@ public class IndividualCollectionSheetLoanFlatData {
     }
 
     public LoanDueData getLoanDueData() {
-        return new LoanDueData(this.loanId, this.accountId, this.accountStatusId, this.productShortName, this.productId, this.currency,
+        return new LoanDueData(this.loanId, this.externalId, this.accountId, this.accountStatusId, this.productShortName, this.productId, this.currency,
                 this.disbursementAmount, this.principalDue, this.principalPaid, this.interestDue, this.interestPaid, this.chargesDue,
                 this.feeDue, this.feePaid);
     }

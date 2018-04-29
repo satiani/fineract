@@ -29,6 +29,7 @@ import org.apache.fineract.organisation.monetary.data.CurrencyData;
 public class LoanDueData {
 
     private final Long loanId;
+    private final Long externalId;
     private final String accountId;
     private final Integer accountStatusId;
     private final String productShortName;
@@ -44,11 +45,12 @@ public class LoanDueData {
     private BigDecimal feeDue = BigDecimal.ZERO;
     private BigDecimal feePaid = BigDecimal.ZERO;
 
-    public LoanDueData(final Long loanId, final String accountId, final Integer accountStatusId, final String productShortName,
+    public LoanDueData(final Long loanId, final Long externalId, final String accountId, final Integer accountStatusId, final String productShortName,
             final Long productId, final CurrencyData currency, final BigDecimal disbursementAmount, final BigDecimal principalDue,
             final BigDecimal principalPaid, final BigDecimal interestDue, final BigDecimal interestPaid, final BigDecimal chargesDue,
             final BigDecimal feeDue, final BigDecimal feePaid) {
         this.loanId = loanId;
+        this.externalId = externalId;
         this.accountId = accountId;
         this.accountStatusId = accountStatusId;
         this.productShortName = productShortName;
@@ -67,6 +69,10 @@ public class LoanDueData {
 
     public Long getLoanId() {
         return this.loanId;
+    }
+
+    public Long getExternalId() {
+        return this.externalId;
     }
 
     public String getAccountId() {

@@ -64,7 +64,7 @@ project.ext.jerseyVersion = '1.17'
 project.ext.springDataJpaVersion = '1.7.0.RELEASE' // also change spring-boot-gradle-plugin version above
 
 project.ext.mysqlUser='root'
-project.ext.mysqlPassword='mysql'
+project.ext.mysqlPassword='REPLACEME'
 
 
 group = 'org.apache.fineract'
@@ -104,6 +104,9 @@ rat {
 	'**/.settings/**',
 	'**/bin/**',
 	'**/.git/**',
+        'tags',
+        'update_mifos.sh',
+        'push_mifos_war.sh',
     '**/.gitignore',
     '**/.gitkeep',
 	'**/*.iml',

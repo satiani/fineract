@@ -736,7 +736,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             StringBuilder sb = new StringBuilder();
             sb.append("SELECT loandata.*, sum(lc.amount_outstanding_derived) as chargesDue ");
             sb.append("from (SELECT cl.display_name As clientName, ");
-            sb.append("cl.id As clientId, ln.id As loanId, ln.account_no As accountId, ln.loan_status_id As accountStatusId,");
+            sb.append("cl.id As clientId, ln.id As loanId, ln.external_id as externalId, ln.account_no As accountId, ln.loan_status_id As accountStatusId,");
             sb.append(" pl.short_name As productShortName, ln.product_id As productId, ");
             sb.append("ln.currency_code as currencyCode, ln.currency_digits as currencyDigits, ln.currency_multiplesof as inMultiplesOf, ");
             sb.append("rc.`name` as currencyName, rc.display_symbol as currencyDisplaySymbol, rc.internationalized_name_code as currencyNameCode, ");
@@ -777,6 +777,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             final String clientName = rs.getString("clientName");
             final Long clientId = JdbcSupport.getLong(rs, "clientId");
             final Long loanId = JdbcSupport.getLong(rs, "loanId");
+            final Long externalId = JdbcSupport.getLong(rs, "externalId");
             final String accountId = rs.getString("accountId");
             final Integer accountStatusId = JdbcSupport.getInteger(rs, "accountStatusId");
             final String productShortName = rs.getString("productShortName");
@@ -803,7 +804,7 @@ public class CollectionSheetReadPlatformServiceImpl implements CollectionSheetRe
             final BigDecimal feeDue = rs.getBigDecimal("feeDue");
             final BigDecimal feePaid = rs.getBigDecimal("feePaid");
 
-            return new IndividualCollectionSheetLoanFlatData(clientName, clientId, loanId, accountId, accountStatusId, productShortName,
+            return new IndividualCollectionSheetLoanFlatData(clientName, clientId, loanId, externalId, accountId, accountStatusId, productShortName,
                     productId, currencyData, disbursementAmount, principalDue, principalPaid, interestDue, interestPaid, chargesDue,
                     feeDue, feePaid);
         }

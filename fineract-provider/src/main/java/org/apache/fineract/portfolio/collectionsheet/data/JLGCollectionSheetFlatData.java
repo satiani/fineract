@@ -165,7 +165,7 @@ public class JLGCollectionSheetFlatData {
     }
 
     public LoanDueData getLoanDueData() {
-        return new LoanDueData(this.loanId, this.accountId, this.accountStatusId, this.productShortName, this.productId, this.currency,
+        return new LoanDueData(this.loanId, null, this.accountId, this.accountStatusId, this.productShortName, this.productId, this.currency,
                 this.disbursementAmount, this.principalDue, this.principalPaid, this.interestDue, this.interestPaid, this.chargesDue,
                 this.feeDue, this.feePaid);
     }
